@@ -54,7 +54,7 @@ MenuSurf.fill((255,0,0))
 MenuSurfRect = MenuSurf.get_rect()
 
 player = Player()
-player.setCoords(PlaySurfRect.centerx,PlaySurfRect.bottom)
+player.setCoords(PlaySurfRect.centerx + 1/4*SCREEN_WIDTH,PlaySurfRect.bottom)
 
 running = True
 while running:
