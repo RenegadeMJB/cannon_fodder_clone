@@ -9,12 +9,22 @@ from pygame.locals import (
     KEYDOWN,
     QUIT
 )
+import random
 
 pygame.init()
 
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 600
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
+PlaySurf = pygame.Surface((3/4*SCREEN_WIDTH,3/4*SCREEN_HEIGHT))
+PlaySurf.fill((170,230,255))
+PlaySurfRect = PlaySurf.get_rect()
+StatsSurf = pygame.Surface((SCREEN_WIDTH/4,3*SCREEN_HEIGHT/4))
+StatsSurf.fill((0,0,255))
+StatsSurfRect = StatsSurf.get_rect()
+MenuSurf = pygame.Surface((SCREEN_WIDTH/4, SCREEN_HEIGHT/4))
+MenuSurf.fill((255,0,0))
+MenuSurfRect = MenuSurf.get_rect()
 
 class Player(pygame.sprite.Sprite):
     def __init__(self) -> None:
@@ -41,17 +51,15 @@ class Player(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy,self).__init__()
+        self.surf = pygame.Surface(10,10)
+        self.surf.fill((255,255,255))
+        self.rect = self.surf.get_rect(
+            center=(
+                random.randint(PlaySurfRect.left, PlaySurfRect.right),
+                5,
+            )
+        )
 
-
-PlaySurf = pygame.Surface((3/4*SCREEN_WIDTH,3/4*SCREEN_HEIGHT))
-PlaySurf.fill((170,230,255))
-PlaySurfRect = PlaySurf.get_rect()
-StatsSurf = pygame.Surface((SCREEN_WIDTH/4,3*SCREEN_HEIGHT/4))
-StatsSurf.fill((0,0,255))
-StatsSurfRect = StatsSurf.get_rect()
-MenuSurf = pygame.Surface((SCREEN_WIDTH/4, SCREEN_HEIGHT/4))
-MenuSurf.fill((255,0,0))
-MenuSurfRect = MenuSurf.get_rect()
 
 player = Player()
 player.setCoords(PlaySurfRect.centerx,PlaySurfRect.bottom)
