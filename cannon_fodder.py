@@ -41,7 +41,7 @@ class Player(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy,self).__init__()
-        
+
 
 PlaySurf = pygame.Surface((3/4*SCREEN_WIDTH,3/4*SCREEN_HEIGHT))
 PlaySurf.fill((170,230,255))
